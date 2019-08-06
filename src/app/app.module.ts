@@ -1,3 +1,4 @@
+import { MainService } from './main.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,20 +12,20 @@ import { EndPageComponent } from './end-page/end-page.component';
 import { DecorationModalComponent } from './decoration-modal/decoration-modal.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SelectionModalComponent,
-    MessageModalComponent,
-    BackgroundComponent,
-    StartPageComponent,
-    EndPageComponent,
-    DecorationModalComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SelectionModalComponent,
+        MessageModalComponent,
+        BackgroundComponent,
+        StartPageComponent,
+        EndPageComponent,
+        DecorationModalComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    providers: [MainService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
