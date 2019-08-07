@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-start-page',
@@ -9,6 +9,8 @@ export class StartPageComponent implements OnInit {
 
     public flag = '#93C2ED';
     public transition = '0s';
+
+    @Output() letsStart: EventEmitter<any> = new EventEmitter();
 
     constructor() { }
 
@@ -27,6 +29,10 @@ export class StartPageComponent implements OnInit {
             this.transition = '0s';
         }, 200);
 
+    }
+
+    onLetsStart() {
+        this.letsStart.emit();
     }
 
 }

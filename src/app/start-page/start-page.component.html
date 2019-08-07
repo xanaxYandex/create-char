@@ -7,6 +7,7 @@
     <span class="text">I'm sure you already know how but can you create a character
         creator?</span>
     <hr class="line">
-    <button [routerLink]="[ '/back']" [style.background]="flag" [ngStyle]="{'transition': transition}">Lets
-        start</button>
+    <button [style.background]="flag" [ngStyle]="{'transition': transition}" (click)="onLetsStart()">
+        Lets start
+    </button>
 </div>

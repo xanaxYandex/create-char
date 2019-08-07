@@ -1,3 +1,4 @@
+import { MainService } from './../main.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackgroundComponent implements OnInit {
 
-    public backGround: string;
+    public background: string;
 
-    constructor() { }
+    public color: string;
+
+    constructor(private mainService: MainService) { }
 
     ngOnInit() {
-        this.backGround = '../../assets/1563214703920.png';
+        this.mainService.backImg.subscribe(result => {
+            this.background = result;
+        });
+        this.mainService.backColor.subscribe(result => {
+            this.color = result;
+        })
     }
 
 }

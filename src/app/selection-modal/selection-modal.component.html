@@ -1,1 +1,37 @@
-<p>selection-modal works!</p>
+<div (click)="flag ? onBodyClick(): flag = true">
+    <app-message-modal *ngIf="messageVision" (hide)="hideMessage()"></app-message-modal>
+    <div class="notification" *ngIf="isNotified && notClosed">
+        <img src="../../assets/white-close-icon-png-3.png" alt="" (click)="notClosed = false">
+        <p>{{notification[id]}}</p>
+    </div>
+    <app-background></app-background>
+    <div class="selection-block">
+        <div class="content">
+            <p>Choose a <strong>{{selectionTitle}}</strong> from the options:</p>
+            <div class="paragraph" (click)="selectOption(0)">
+                <span class="circuit" [style.background]="color" [ngStyle]="{'transition': transition}">
+                    <span class="circle" *ngIf="circles[0]"></span>
+                </span>
+                <span class="selector">{{paragraph[0]}}</span>
+            </div>
+            <div class="paragraph" (click)="selectOption(1)">
+                <span class="circuit" [style.background]="color" [ngStyle]="{'transition': transition}">
+                    <span class="circle" *ngIf="circles[1]"></span>
+                </span>
+                <span class="selector">{{paragraph[1]}}</span>
+            </div>
+            <div class="paragraph" (click)="selectOption(2)">
+                <span class="circuit" [style.background]="color" [ngStyle]="{'transition': transition}">
+                    <span class="circle" *ngIf="circles[2]"></span>
+                </span>
+                <span class="selector">{{paragraph[2]}}</span>
+            </div>
+            <div class="navigation" [style.justify-content]="!backBut ? 'flex-end' : 'space-between'">
+                <button class="back" *ngIf="backBut" [style.background]="color" [ngStyle]="{'transition': transition}"
+                    (click)="backButton()">Back</button>
+                <button class="next" [style.background]="color" [ngStyle]="{'transition': transition}"
+                    (click)="nextButton()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

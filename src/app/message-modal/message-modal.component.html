@@ -1,1 +1,8 @@
-<p>message-modal works!</p>
+<div class="message">
+    <div class="content">
+        <p>{{text[0]}}</p>
+        <p *ngIf="title === 'Theme' ? false : true"><strong>{{title}}</strong></p>
+        <p>{{text[1]}}</p>
+        <button (click)="hideMessage()">Got it!</button>
+    </div>
+</div>

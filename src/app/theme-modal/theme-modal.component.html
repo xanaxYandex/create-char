@@ -1,0 +1,30 @@
+<div (click)="flag ? onBodyClick(): flag = true">
+    <app-message-modal *ngIf="messageVision" (hide)="hideMessage()"></app-message-modal>
+    <app-background></app-background>
+    <div class="selection-block" [style.background-color]="back">
+        <div class="content">
+            <p>{{selectionTitle}}:</p>
+            <div class="themes">
+                <div class="paragraph" (click)="selectOption(0, false)">
+                    <span class="circuit" [style.background]="color" [ngStyle]="{'transition': transition}">
+                        <span class="circle" *ngIf="circles[0]"></span>
+                    </span>
+                    <span class="selector">{{paragraph[0]}}</span>
+                </div>
+                <div class="paragraph" (click)="selectOption(1, false)">
+                    <span class="circuit" [style.background]="color" [ngStyle]="{'transition': transition}">
+                        <span class="circle" *ngIf="circles[1]"></span>
+                    </span>
+                    <span class="selector">{{paragraph[1]}}</span>
+                </div>
+            </div>
+            <div class="themes">
+                <p>Background:</p>
+                <span [style.background]="colorPick" [cpToggle]="true" [cpDialogDisplay]="'inline'"
+                    [cpCancelButton]="false" [cpDisableInput]="true" [cpAlphaChannel]="'disabled'"
+                    [(colorPicker)]="colorPick"></span>
+            </div>
+            <button>Save.</button>
+        </div>
+    </div>
+</div>
