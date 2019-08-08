@@ -1,6 +1,6 @@
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MainService } from './../main.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-theme-modal',
@@ -9,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThemeModalComponent implements OnInit {
 
-    public back = 'white';
+    @Output() toEndPage: EventEmitter<any> = new EventEmitter();
 
-    public colorPick = '';
+    public fontColor = '';
+
+    public colorPick = '#FFF9F9';
 
     public messageVision = true;
 
@@ -20,10 +22,6 @@ export class ThemeModalComponent implements OnInit {
     public flag = true;
 
     public id = 0;
-
-    public color = '';
-
-    public transition = '';
 
     public circles = [true, false, false];
 
@@ -38,6 +36,10 @@ export class ThemeModalComponent implements OnInit {
             this.selectionTitle = result['selectionTitle'];
             this.paragraph = result['paragraphs'];
         });
+        this.mainService.theme.subscribe(result => {
+            this.fontColor = result['fontColor'];
+            this.colorPick = result['modalsColor'];
+        });
     }
 
     selectOption(optionId: number, day: boolean) {
@@ -47,9 +49,17 @@ export class ThemeModalComponent implements OnInit {
         }, 100);
         if (this.selectionTitle === 'Theme') {
             if (day) {
-
+                this.mainService.theme.next({
+                    backColor: 'white',
+                    fontColor: '#716868',
+                    modalsColor: '#FFF9F9'
+                });
             } else {
-
+                this.mainService.theme.next({
+                    backColor: '#343425',
+                    fontColor: 'white',
+                    modalsColor: '#0C0C08'
+                });
             }
             this.circles.map((elem, i, arr) => {
                 if (i === optionId) {
@@ -64,22 +74,14 @@ export class ThemeModalComponent implements OnInit {
 
     }
 
-    onBodyClick() {
-        this.color = 'rgb(46, 100, 172)';
-        setTimeout(() => {
-            this.transition = '0.5s';
-        }, 0);
-        setTimeout(() => {
-            this.color = '';
-        }, 100);
-        setTimeout(() => {
-            this.transition = '0s';
-        }, 200);
-
-    }
-
     hideMessage() {
         this.messageVision = false;
+    }
+
+    saveSettings() {
+        this.toEndPage.emit();
+        this.mainService.saveSettings(this.colorPick);
+        this.mainService.toRace();
     }
 
 }

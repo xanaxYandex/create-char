@@ -18,9 +18,9 @@ export class BackgroundComponent implements OnInit {
         this.mainService.backImg.subscribe(result => {
             this.background = result;
         });
-        this.mainService.backColor.subscribe(result => {
-            this.color = result;
-        })
+        this.mainService.theme.subscribe(result => {
+            this.color = result['backColor'];
+        });
     }
 
 }

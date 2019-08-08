@@ -13,11 +13,25 @@ export class AppComponent {
 
     public onTheme = false;
 
+    public onEndPage = false;
+
     toCreatingChar() {
         this.onCreatingPage = true;
     }
 
     toThemeModal() {
         this.onTheme = true;
+    }
+
+    toEndPage() {
+        console.log('hui');
+        this.onCreatingPage = false;
+        this.onTheme = false;
+        this.onEndPage = true;
+    }
+
+    goAgain() {
+        this.onEndPage = false;
+        this.onCreatingPage = false;
     }
 }

@@ -1,0 +1,57 @@
+.rectangle-1 {
+    text-align: left;
+    padding: 6px 38px 0px 38px;
+
+    .logo {
+        margin-bottom: 32px;
+        width: 332px;
+        height: 89px;
+
+        font-family: Waiting for the Sunrise;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 80px;
+        line-height: 132px;
+
+        color: #93C2ED;
+    }
+
+    .text {
+        margin: 35px 0px 0px 0px;
+        text-align: left;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 28px;
+
+        color: #716868;
+    }
+
+    .line {
+        width: 275px;
+        height: 0px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+        border: 1px solid #93C2ED;
+    }
+    button {
+        display: block;
+        margin: 58px auto 0 auto;
+        border: 0;
+        width: 230px;
+        height: 75px;
+
+        background: #93C2ED;
+        text-align: center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 42px;
+
+        color: #FFFFFF;
+
+    }
+}

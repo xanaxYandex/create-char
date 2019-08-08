@@ -9,7 +9,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class MessageModalComponent implements OnInit {
 
     public title = '';
+
     public text = ['', ''];
+
+    public colorPick = '';
+
+    public fontColor = '';
 
     @Output() hide: EventEmitter<any> = new EventEmitter();
 
@@ -19,6 +24,11 @@ export class MessageModalComponent implements OnInit {
         this.mainService.content.subscribe(result => {
             this.title = result['selectionTitle'];
             this.text = result['messages'];
+        });
+
+        this.mainService.theme.subscribe(result => {
+            this.fontColor = result['fontColor'];
+            this.colorPick = result['modalsColor'];
         });
     }
 

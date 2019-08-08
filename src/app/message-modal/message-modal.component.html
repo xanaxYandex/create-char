@@ -1,8 +1,9 @@
-<div class="message">
+<div class="message" [style.background-color]="colorPick" [style.color]="fontColor">
     <div class="content">
         <p>{{text[0]}}</p>
         <p *ngIf="title === 'Theme' ? false : true"><strong>{{title}}</strong></p>
         <p>{{text[1]}}</p>
-        <button (click)="hideMessage()">Got it!</button>
+        <button (click)="hideMessage()" [style.background-color]="colorPick === '#FFF9F9' ? '#93C2ED' : '#5B6D7E' ">Got
+            it!</button>
     </div>
 </div>

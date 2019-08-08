@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { MainService } from './../main.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-end-page',
-  templateUrl: './end-page.component.html',
-  styleUrls: ['./end-page.component.scss']
+    selector: 'app-end-page',
+    templateUrl: './end-page.component.html',
+    styleUrls: ['./end-page.component.scss']
 })
 export class EndPageComponent implements OnInit {
 
-  constructor() { }
+    @Output() goAgain: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit() {
-  }
+    constructor(private mainService: MainService) { }
+
+    ngOnInit() {
+    }
+
+    again() {
+        this.goAgain.emit();
+    }
 
 }

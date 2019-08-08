@@ -1,3 +1,4 @@
-<app-start-page (letsStart)="toCreatingChar()" *ngIf="!onCreatingPage"></app-start-page>
+<app-start-page (letsStart)="toCreatingChar()" *ngIf="!onCreatingPage && !onEndPage"></app-start-page>
 <app-selection-modal *ngIf="onCreatingPage && !onTheme" (toThemeModal)="toThemeModal()"></app-selection-modal>
-<app-theme-modal *ngIf="onTheme"></app-theme-modal>
+<app-theme-modal *ngIf="onTheme" (toEndPage)="toEndPage()"></app-theme-modal>
+<app-end-page (goAgain)="goAgain()" *ngIf="onEndPage"></app-end-page>

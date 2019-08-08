@@ -5,13 +5,23 @@ export class MainService {
 
     public content: BehaviorSubject<object> = new BehaviorSubject({});
     public backImg: BehaviorSubject<string> = new BehaviorSubject('../../assets/Race0.png');
-    public backColor: BehaviorSubject<string> = new BehaviorSubject('black');
+    public theme: BehaviorSubject<object> = new BehaviorSubject({
+        backColor: 'white',
+        fontColor: '#716868',
+        modalsColor: '#FFF9F9'
+    });
 
     constructor() {
+        this.theme.next({
+            backColor: localStorage.getItem('backColor'),
+            fontColor: localStorage.getItem('fontColor'),
+            modalsColor: localStorage.getItem('modalsColor')
+        });
         this.toRace();
     }
 
     toRace() {
+        this.backImg.next('../../assets/Race0.png');
         this.content.next({
             selectionTitle: 'Race',
             paragraphs: ['Human', 'Elf', 'Dwarf'],
@@ -36,4 +46,13 @@ export class MainService {
             messages: ['Okay, glad we both chose a warrior dwarf :3', 'Left a little just choose settings'],
         });
     }
+
+    saveSettings(modalsColor: string) {
+        this.theme.subscribe(result => {
+            localStorage.setItem('backColor', result['backColor']);
+            localStorage.setItem('fontColor', result['fontColor']);
+            localStorage.setItem('modalsColor', modalsColor);
+        });
+    }
+
 }

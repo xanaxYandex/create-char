@@ -10,6 +10,10 @@ export class SelectionModalComponent implements OnInit {
 
     @Output() toThemeModal: EventEmitter<any> = new EventEmitter();
 
+    public colorPick = '';
+
+    public fontColor = '';
+
     public notClosed = false;
 
     public isNotified = false;
@@ -24,9 +28,7 @@ export class SelectionModalComponent implements OnInit {
 
     public id = 0;
 
-    public color = '';
-
-    public transition = '';
+    public notificationId = this.id;
 
     public circles = [true, false, false];
 
@@ -42,6 +44,10 @@ export class SelectionModalComponent implements OnInit {
             this.paragraph = result['paragraphs'];
             this.notification = result['notifications'];
         });
+        this.mainService.theme.subscribe(result => {
+            this.fontColor = result['fontColor'];
+            this.colorPick = result['modalsColor'];
+        });
     }
 
     selectOption(optionId: number) {
@@ -54,6 +60,7 @@ export class SelectionModalComponent implements OnInit {
             this.circles.map((elem, i, arr) => {
                 if (i === optionId) {
                     this.mainService.backImg.next(`../../assets/${this.selectionTitle}${optionId}.png`);
+                    this.notificationId = optionId;
                     this.id = optionId;
                     return arr[i] = true;
 
@@ -64,8 +71,8 @@ export class SelectionModalComponent implements OnInit {
         } else if (this.selectionTitle === 'Class') {
             this.circles.map((elem, i, arr) => {
                 if (i === optionId) {
+                    this.notificationId = optionId;
                     this.mainService.backImg.next(`../../assets/${this.selectionTitle}${this.paragraph[optionId]}${this.id}.png`);
-                    this.id = optionId;
                     return arr[i] = true;
 
                 } else {
@@ -73,20 +80,6 @@ export class SelectionModalComponent implements OnInit {
                 }
             });
         }
-
-    }
-
-    onBodyClick() {
-        this.color = 'rgb(46, 100, 172)';
-        setTimeout(() => {
-            this.transition = '0.5s';
-        }, 0);
-        setTimeout(() => {
-            this.color = '';
-        }, 100);
-        setTimeout(() => {
-            this.transition = '0s';
-        }, 200);
 
     }
 

@@ -8,7 +8,6 @@ import { MessageModalComponent } from './message-modal/message-modal.component';
 import { BackgroundComponent } from './background/background.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { EndPageComponent } from './end-page/end-page.component';
-import { DecorationModalComponent } from './decoration-modal/decoration-modal.component';
 import { ThemeModalComponent } from './theme-modal/theme-modal.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -20,7 +19,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
         BackgroundComponent,
         StartPageComponent,
         EndPageComponent,
-        DecorationModalComponent,
         ThemeModalComponent
     ],
     imports: [
