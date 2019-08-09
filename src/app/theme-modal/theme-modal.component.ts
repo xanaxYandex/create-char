@@ -19,8 +19,6 @@ export class ThemeModalComponent implements OnInit {
 
     public backBut = false;
 
-    public flag = true;
-
     public id = 0;
 
     public circles = [true, false, false];
@@ -43,35 +41,28 @@ export class ThemeModalComponent implements OnInit {
     }
 
     selectOption(optionId: number, day: boolean) {
-        this.flag = false;
-        setTimeout(() => {
-            this.flag = true;
-        }, 100);
-        if (this.selectionTitle === 'Theme') {
-            if (day) {
-                this.mainService.theme.next({
-                    backColor: 'white',
-                    fontColor: '#716868',
-                    modalsColor: '#FFF9F9'
-                });
-            } else {
-                this.mainService.theme.next({
-                    backColor: '#343425',
-                    fontColor: 'white',
-                    modalsColor: '#0C0C08'
-                });
-            }
-            this.circles.map((elem, i, arr) => {
-                if (i === optionId) {
-                    this.id = optionId;
-                    return arr[i] = true;
-
-                } else {
-                    return arr[i] = false;
-                }
+        if (day) {
+            this.mainService.theme.next({
+                backColor: 'white',
+                fontColor: '#716868',
+                modalsColor: '#FFF9F9'
+            });
+        } else {
+            this.mainService.theme.next({
+                backColor: '#343425',
+                fontColor: 'white',
+                modalsColor: '#0C0C08'
             });
         }
+        this.circles.map((elem, i, arr) => {
+            if (i === optionId) {
+                this.id = optionId;
+                return arr[i] = true;
 
+            } else {
+                return arr[i] = false;
+            }
+        });
     }
 
     hideMessage() {
