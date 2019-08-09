@@ -12,15 +12,15 @@ export class MainService {
     });
 
     constructor() {
+        this.toRace();
+    }
+
+    toRace() {
         this.theme.next({
             backColor: localStorage.getItem('backColor'),
             fontColor: localStorage.getItem('fontColor'),
             modalsColor: localStorage.getItem('modalsColor')
         });
-        this.toRace();
-    }
-
-    toRace() {
         this.backImg.next('../../assets/Race0.png');
         this.content.next({
             selectionTitle: 'Race',
@@ -49,6 +49,7 @@ export class MainService {
 
     saveSettings(modalsColor: string) {
         this.theme.subscribe(result => {
+            console.log(modalsColor);
             localStorage.setItem('backColor', result['backColor']);
             localStorage.setItem('fontColor', result['fontColor']);
             localStorage.setItem('modalsColor', modalsColor);
