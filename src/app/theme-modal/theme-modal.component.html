@@ -1,6 +1,6 @@
 <app-message-modal *ngIf="messageVision" (hide)="hideMessage()"></app-message-modal>
 <app-background></app-background>
-<div class="selection-block" [style.background-color]="colorPick" [style.color]="fontColor">
+<div class="selection-block" appColors [backColor]="colorPick" [fontColor]="fontColor">
     <div class="content">
         <p>{{selectionTitle}}:</p>
         <div class="themes">
@@ -23,7 +23,6 @@
                 [cpDisableInput]="true" [cpAlphaChannel]="'disabled'" [(colorPicker)]="colorPick"></span>
 
         </div>
-        <button [style.background-color]="colorPick === '#FFF9F9' ? '#93C2ED' : '#5B6D7E' "
-            (click)="saveSettings()">Save</button>
+        <button [ngClass]="{'btn-color': colorPick !== '#FFF9F9'}" (click)="saveSettings()">Save</button>
     </div>
 </div>

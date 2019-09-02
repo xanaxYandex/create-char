@@ -37,7 +37,7 @@
 
     .content {
         margin: 23px 22px 0px 22px;
-    
+
         .paragraph {
             margin-top: 15px;
 
@@ -50,10 +50,10 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            border: 2px solid #716868;
-    
+            border: 2px solid #8d8d8d;
+
             .circle {
-                background: #716868;
+                background: #858585;
                 position: relative;
                 top: 2.5px;
                 left: 2.5px;
@@ -63,15 +63,18 @@
                 border-radius: 50%;
             }
         }
+
         .selector {
             padding-bottom: 5px;
-            display: inline-block;;
+            display: inline-block;
+            ;
         }
     }
 
     .navigation {
         margin-top: 10px;
         display: flex;
+        justify-content: flex-end;
 
         button {
             border: 0;
@@ -82,5 +85,13 @@
 
             color: #FFFFFF;
         }
+    }
+
+    .nav-space-beetween {
+        justify-content: space-between !important;
+    }
+
+    .btn-color {
+        background-color: #5B6D7E !important;
     }
 }

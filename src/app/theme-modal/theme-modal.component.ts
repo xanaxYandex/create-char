@@ -1,4 +1,3 @@
-import { ColorPickerModule } from 'ngx-color-picker';
 import { MainService } from './../main.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -8,28 +7,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./theme-modal.component.scss']
 })
 export class ThemeModalComponent implements OnInit {
-
     @Output() toEndPage: EventEmitter<any> = new EventEmitter();
-
     public fontColor = '';
-
     public colorPick = '#FFF9F9';
-
     public messageVision = true;
-
     public backBut = false;
-
     public id = 0;
-
     public circles = [true, false, false];
-
     public selectionTitle = '';
-
     public paragraph = [];
 
     constructor(private mainService: MainService) { }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         this.mainService.content.subscribe(result => {
             this.selectionTitle = result['selectionTitle'];
             this.paragraph = result['paragraphs'];
@@ -40,7 +30,7 @@ export class ThemeModalComponent implements OnInit {
         });
     }
 
-    selectOption(optionId: number, day: boolean) {
+    public selectOption(optionId: number, day: boolean): void {
         if (day) {
             this.mainService.theme.next({
                 backColor: 'white',
@@ -65,15 +55,14 @@ export class ThemeModalComponent implements OnInit {
         });
     }
 
-    hideMessage() {
+    public hideMessage(): void {
         this.messageVision = false;
     }
 
-    saveSettings() {
+    public saveSettings(): void {
         this.toEndPage.emit();
         this.mainService.saveSettings(this.colorPick);
         this.mainService.toRace();
     }
-
 }
 

@@ -10,6 +10,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { EndPageComponent } from './end-page/end-page.component';
 import { ThemeModalComponent } from './theme-modal/theme-modal.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorsDirective } from './colors.directive';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
         BackgroundComponent,
         StartPageComponent,
         EndPageComponent,
-        ThemeModalComponent
+        ThemeModalComponent,
+        ColorsDirective
     ],
     imports: [
         BrowserModule,

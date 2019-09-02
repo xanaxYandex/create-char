@@ -5,20 +5,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     templateUrl: './start-page.component.html',
     styleUrls: ['./start-page.component.scss']
 })
-export class StartPageComponent implements OnInit {
-
-    public flag = '#93C2ED';
-    public transition = '0s';
-
+export class StartPageComponent {
     @Output() letsStart: EventEmitter<any> = new EventEmitter();
 
     constructor() { }
 
-    ngOnInit() {
-    }
-
-    onLetsStart() {
+    public onLetsStart(): void {
         this.letsStart.emit();
     }
-
 }

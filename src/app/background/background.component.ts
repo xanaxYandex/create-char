@@ -7,14 +7,12 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./background.component.scss']
 })
 export class BackgroundComponent implements OnInit {
-
     public background: string;
-
     public color: string;
 
     constructor(private mainService: MainService) { }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         this.mainService.backImg.subscribe(result => {
             this.background = result;
         });

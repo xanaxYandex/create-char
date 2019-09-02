@@ -7,38 +7,24 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./selection-modal.component.scss']
 })
 export class SelectionModalComponent implements OnInit {
-
     @Output() toThemeModal: EventEmitter<any> = new EventEmitter();
-
     public colorPick = '';
-
     public fontColor = '';
-
     public notClosed = false;
-
     public isNotified = false;
-
     public notification = [];
-
     public messageVision = true;
-
     public backBut = false;
-
     public flag = true;
-
     public id = 0;
-
     public notificationId = this.id;
-
     public circles = [true, false, false];
-
     public selectionTitle = '';
-
     public paragraph = [];
 
     constructor(private mainService: MainService) { }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         this.mainService.content.subscribe(result => {
             this.selectionTitle = result['selectionTitle'];
             this.paragraph = result['paragraphs'];
@@ -50,7 +36,7 @@ export class SelectionModalComponent implements OnInit {
         });
     }
 
-    selectOption(optionId: number) {
+    public selectOption(optionId: number): void {
         this.isNotified = false;
         this.flag = false;
         setTimeout(() => {
@@ -83,7 +69,7 @@ export class SelectionModalComponent implements OnInit {
 
     }
 
-    nextButton() {
+    public nextButton(): void {
         if (!this.isNotified) {
             this.messageVision = false;
             this.isNotified = true;
@@ -105,7 +91,7 @@ export class SelectionModalComponent implements OnInit {
 
     }
 
-    backButton() {
+    public backButton(): void {
         if (this.selectionTitle === 'Class') {
             this.mainService.toRace();
             this.mainService.backImg.next(`../../assets/${this.selectionTitle}${0}.png`);
@@ -115,7 +101,7 @@ export class SelectionModalComponent implements OnInit {
         }
     }
 
-    hideMessage() {
+    public hideMessage(): void {
         this.messageVision = false;
     }
 

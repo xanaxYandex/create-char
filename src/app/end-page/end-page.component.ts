@@ -6,16 +6,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     templateUrl: './end-page.component.html',
     styleUrls: ['./end-page.component.scss']
 })
-export class EndPageComponent implements OnInit {
-
+export class EndPageComponent {
     @Output() goAgain: EventEmitter<any> = new EventEmitter();
 
     constructor(private mainService: MainService) { }
 
-    ngOnInit() {
-    }
-
-    again() {
+    public again(): void {
         this.goAgain.emit();
     }
 

@@ -7,20 +7,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./message-modal.component.scss']
 })
 export class MessageModalComponent implements OnInit {
-
     public title = '';
-
     public text = ['', ''];
-
     public colorPick = '';
-
     public fontColor = '';
 
     @Output() hide: EventEmitter<any> = new EventEmitter();
 
     constructor(private mainService: MainService) { }
 
-    ngOnInit() {
+    public ngOnInit(): void {
         this.mainService.content.subscribe(result => {
             this.title = result['selectionTitle'];
             this.text = result['messages'];
@@ -32,7 +28,7 @@ export class MessageModalComponent implements OnInit {
         });
     }
 
-    hideMessage() {
+    public hideMessage(): void {
         this.hide.emit();
     }
 

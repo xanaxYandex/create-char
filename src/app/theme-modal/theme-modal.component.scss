@@ -16,15 +16,15 @@
         p {
             margin: 0;
         }
-    
+
         .themes {
-            margin-top: 20px; 
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
         }
 
         .paragraph {
-            margin: 0px 30px 0px 0px ;
+            margin: 0px 30px 0px 0px;
         }
 
         .circuit {
@@ -35,7 +35,7 @@
             height: 16px;
             border-radius: 50%;
             border: 2px solid #716868;
-    
+
             .circle {
                 background: #716868;
                 position: relative;
@@ -47,10 +47,12 @@
                 border-radius: 50%;
             }
         }
+
         .selector {
             padding-bottom: 5px;
             display: inline-block;
         }
+
         button {
             width: 90px;
             height: 36px;
@@ -63,10 +65,17 @@
             font-weight: normal;
             font-size: 24px;
             line-height: 28px;
-    
+
             color: #FFFFFF;
-    
+
         }
     }
-    
+
+    .nav-space-beetween {
+        justify-content: space-between !important;
+    }
+
+    .btn-color {
+        background-color: #5B6D7E !important;
+    }
 }

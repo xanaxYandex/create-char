@@ -4,7 +4,7 @@
     <p>{{notification[notificationId]}}</p>
 </div>
 <app-background></app-background>
-<div class="selection-block" [style.background-color]="colorPick" [style.color]="fontColor">
+<div class="selection-block" appColors [backColor]="colorPick" [fontColor]="fontColor">
     <div class="content">
         <p>Choose a <strong>{{selectionTitle}}</strong> from the options:</p>
         <div class="paragraph" (click)="selectOption(0)">
@@ -25,11 +25,10 @@
             </span>
             <span class="selector">{{paragraph[2]}}</span>
         </div>
-        <div class="navigation" [style.justify-content]="!backBut ? 'flex-end' : 'space-between'">
+        <div class="navigation" [ngClass]="{'nav-space-beetween': backBut}">
             <button class="back" *ngIf="backBut" (click)="backButton()"
-                [style.background-color]="colorPick === '#FFF9F9' ? '#93C2ED' : '#5B6D7E' ">Back</button>
-            <button class="next" (click)="nextButton()"
-                [style.background-color]="colorPick === '#FFF9F9' ? '#93C2ED' : '#5B6D7E' ">Next</button>
+                [ngClass]="{'btn-color': colorPick !== '#FFF9F9'}">Back</button>
+            <button class="next" (click)="nextButton()" [ngClass]="{'btn-color': colorPick !== '#FFF9F9'}">Next</button>
         </div>
     </div>
 </div>
